@@ -1,12 +1,4 @@
-export const state = () => ({
-  userRegisterFormInit: {
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    verify: '',
-  },
-})
+export const state = () => ({})
 
 export const mutations = {
   setUserRegister(state, userData) {
@@ -16,9 +8,8 @@ export const mutations = {
 
 export const actions = {
   async postUserRegister(context, body) {
-    const res = await this.$axios.post('http://localhost:8000/register', body, {
+    return await this.$axios.post('http://localhost:8000/register', body, {
       withCredentials: true,
     })
-    context.commit('setUserRegister', res.data)
   },
 }
