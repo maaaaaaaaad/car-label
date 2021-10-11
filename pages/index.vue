@@ -22,7 +22,7 @@
                   <v-row>
                     <v-col cols='12'>
                       <v-text-field
-                        v-model='loginEmail'
+                        v-model='$store.state.userRegisterFormInit.email'
                         :rules='loginEmailRules'
                         label='E-mail'
                         required
@@ -30,7 +30,7 @@
                     </v-col>
                     <v-col cols='12'>
                       <v-text-field
-                        v-model='loginPassword'
+                        v-model='$store.state.userRegisterFormInit.password'
                         :append-icon="show1 ? 'eye' : 'eye-off'"
                         :rules='[rules.required, rules.min]'
                         :type="show1 ? 'text' : 'password'"
@@ -66,7 +66,7 @@
                   <v-row>
                     <v-col cols='12' sm='6' md='6'>
                       <v-text-field
-                        v-model='firstName'
+                        v-model='$store.state.userRegisterFormInit.firstName'
                         :rules='[rules.required]'
                         label='First Name'
                         maxlength='20'
@@ -75,7 +75,7 @@
                     </v-col>
                     <v-col cols='12' sm='6' md='6'>
                       <v-text-field
-                        v-model='lastName'
+                        v-model='$store.state.userRegisterFormInit.lastName'
                         :rules='[rules.required]'
                         label='Last Name'
                         maxlength='20'
@@ -84,7 +84,7 @@
                     </v-col>
                     <v-col cols='12'>
                       <v-text-field
-                        v-model='email'
+                        v-model='$store.state.userRegisterFormInit.email'
                         :rules='emailRules'
                         label='E-mail'
                         required
@@ -92,7 +92,7 @@
                     </v-col>
                     <v-col cols='12'>
                       <v-text-field
-                        v-model='password'
+                        v-model='$store.state.userRegisterFormInit.password'
                         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                         :rules='[rules.required, rules.min]'
                         :type="show1 ? 'text' : 'password'"
@@ -105,7 +105,7 @@
                     </v-col>
                     <v-col cols='12'>
                       <v-text-field
-                        v-model='verify'
+                        v-model='$store.state.userRegisterFormInit.verify'
                         block
                         :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
                         :rules='[rules.required, passwordMatch]'
@@ -161,13 +161,7 @@ export default {
         password: this.password,
         verify: this.verify
       }
-      const res = await this.$axios.post(
-        'http://localhost:8000/register',
-        body,
-        {
-          withCredentials: true
-        }
-      )
+      const res = await this.$store.dispatch('postUserRegister', body)
       console.log(res.data)
     }
   },
@@ -179,14 +173,6 @@ export default {
       { name: 'Register', icon: 'mdi-account-outline' }
     ],
     valid: true,
-
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    verify: '',
-    loginPassword: '',
-    loginEmail: '',
     loginEmailRules: [
       (v) => !!v || 'Required',
       (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid'
