@@ -52,8 +52,8 @@ export default {
         },
         {
           icon: 'mdi-apps',
-          title: 'login',
-          to: '/login'
+          title: 'profile',
+          to: '/profile'
         }
       ],
       miniVariant: false,

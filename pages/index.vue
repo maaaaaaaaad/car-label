@@ -152,7 +152,15 @@ export default {
           name: this.firstName + this.lastName,
           email: this.email
         })
+        this.dialog = false
       }
+      console.log({
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+        verify: this.verify
+      })
     }
   },
   data: () => ({
