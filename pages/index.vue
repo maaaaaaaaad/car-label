@@ -146,7 +146,7 @@ export default {
     }
   },
   methods: {
-    validate() {
+    async validate() {
       if (this.$refs.loginForm.validate()) {
         console.log({
           name: this.firstName + this.lastName,
@@ -154,13 +154,21 @@ export default {
         })
         this.dialog = false
       }
-      console.log({
+      const body = {
         firstName: this.firstName,
         lastName: this.lastName,
         email: this.email,
         password: this.password,
         verify: this.verify
-      })
+      }
+      const res = await this.$axios.post(
+        'http://localhost:8000/register',
+        body,
+        {
+          withCredentials: true
+        }
+      )
+      console.log(res.data)
     }
   },
   data: () => ({
