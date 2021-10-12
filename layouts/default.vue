@@ -1,26 +1,12 @@
 <template>
-  <v-app dark>
-    <TopNavi />
-
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
-
-    <Footer />
-  </v-app>
+  <div>
+    <Nuxt />
+  </div>
 </template>
 
 <script>
-import Footer from '~/components/Footer'
-import TopNavi from '~/components/TopNavi'
-
 export default {
-  components: {
-    TopNavi,
-    Footer
-  },
+  components: {},
   data() {
     return {}
   }
