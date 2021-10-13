@@ -2,6 +2,8 @@
   <div>
     <NuxtLink to='/'>Home</NuxtLink>
     <NuxtLink to='/about'>About</NuxtLink>
+    <NuxtLink to='/login'>login</NuxtLink>
+    <NuxtLink to='/signup'>Signup</NuxtLink>
   </div>
 </template>
 

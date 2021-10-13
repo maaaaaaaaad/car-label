@@ -1,15 +1,17 @@
 <template>
-  <v-app>
+  <div>
     <header>
       <Navigator />
     </header>
+
     <main>
       <Nuxt />
     </main>
+
     <footer>
       <Footer />
     </footer>
-  </v-app>
+  </div>
 </template>
 
 <script>
