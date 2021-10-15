@@ -68,12 +68,26 @@ export default {
     }
   }),
   methods: {
-    register() {
+    async register() {
       if (this.$refs['register-form']) {
         const registerFormData = {
           ...this.registerForm
         }
-        console.log(registerFormData)
+        const post = await this.$axios.post(
+          'http://localhost:8000/register',
+          registerFormData,
+          {
+            withCredentials: true
+          }
+        )
+        try {
+          if (post.status === 200) {
+            console.log('Done! ' + post.data)
+            await this.$router.push('/login')
+          }
+        } catch (e) {
+          console.log('Error! ' + e.message)
+        }
       }
     }
   }

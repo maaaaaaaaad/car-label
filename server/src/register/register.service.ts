@@ -9,10 +9,10 @@ export class RegisterService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async register(body: UserRegisterDto) {
-    const { firstName, lastName, password, verify, email } = body;
+    const { id, nickname, password, verify, email } = body;
     const user = await new this.userModel({
-      firstName,
-      lastName,
+      id,
+      nickname,
       password,
       verify,
       email,
